@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/8aa17a250d.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Added Roboto font weights -->
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    background: #F4F4F4;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif; 
+  }
+  #submitBtn.purple {
+    background-color: purple; 
+    color: white;
+  }
+  ::placeholder {
+   color: #999;  
+   padding-left: 3px;
+   padding-top: 3px;
+  }
+  a{
+    text-decoration: none;
+  }
+  input{
+    padding: 8px;
+    border: 1px solid grey;
+    outline: none;
+    border-radius: 4px;
+  }
+  #username,#password{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 150px;
+  }
+  #title{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 334px;
+  }
+  #message{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 334px;
+    height: 100px;
+    padding: 6px;
+    resize: none;
+    outline: none;
+    border-radius: 4px;
+  }
+  #agreeCheckbox{
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  #submitBtn{
+    padding: 6px;
+    margin-top: 12px;
+    width: 120px;
+    margin-left: 120px;
+    font-weight: bold;
+  }
+  .post-text{
+    margin-left: 10px;
+  }
+  .icon{
+    width: 50px;
+  }
+  .header{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .icon-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+
+  }
+  .back-icon{
+    width: 34px;
+  }
+</style>
+</head>
+<body>
+    <div class="icon-box" onclick="reload()">
+    <img src="icon/icon.png" class="icon">
+    <h3>Yopsh !</h3>
+  </div>
+  <h3 style="margin-left: 10px; margin-top: 10px;">Upload Your're Post:-</h3>
+  <p class="post-text">Please Fill Correct Username & Password</p>
+  <form id="myForm">
+    <input type="text" id="username" name="username" required placeholder="Username:">
+    <input type="password" id="password" name="password" required placeholder="Password:"><br>
+    <input type="text" id="title" name="title" required placeholder="Title"><br>
+    <textarea id="message" name="message" required placeholder="Message"></textarea><br> <!-- Added required attribute -->
+    <input type="checkbox" id="agreeCheckbox">
+    <label for="agreeCheckbox">I agree to the <a href="Trash/t&c.html">terms and conditions</a></label><br> <!-- Corrected 'herf' to 'href' -->
+    <input type="submit" id="submitBtn" value="Submit">
+  </form>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (document.getElementById('agreeCheckbox').checked) {
+        const formData = new FormData(this);
+        fetch('https://script.google.com/macros/s/AKfycby-fdpQJVPTVAyVU-HgyjQmvil969-8pEPcsyXv34y-_5T8htThD83G-CwE7wSzxCuTLg/exec', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          document.getElementById('myForm').reset();
+          window.location.reload(); // Refresh the page
+        })
+        .catch(error => alert('Error: ' + error.message));
+      } else {
+        alert("Please agree to the terms and conditions.");
+      }
+    });
+
+    document.getElementById('agreeCheckbox').addEventListener('change', function() {
+      const submitBtn = document.getElementById('submitBtn');
+      if (this.checked) {
+        submitBtn.classList.add('purple');
+      } else {
+        submitBtn.classList.remove('purple');
+      }
+    });
+  </script>
+  <script>
+    function reload(){
+      location.reload()
+    }
+  </script>
+</body>
+</html>

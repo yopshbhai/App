@@ -1,0 +1,160 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/8aa17a250d.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        background: #F4F4F4;
+        overflow: hidden;
+        font-family: 'Roboto';
+    }
+    @media only screen and (max-width: 600px) {
+        .header {
+            text-align: center;
+        }
+
+        .header-text {
+            font-family: "Tilt Neon", sans-serif;
+            font-size: 24px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .games {
+            background: #505050;
+            height: 10%;
+            margin-top: 20px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            border-radius: 25px;
+        }
+
+        .img-icon {
+            border-radius: 25px;
+            width: 50px;
+        }
+
+        .container {
+            background: #b1b1b1;
+            margin-top: 10px;
+            width: 60px;
+            margin-left: 10px;
+            border-radius: 125px;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        .container:hover,
+        .container.clicked {
+            background: #74b7d9;
+        }
+        
+        .games-container{
+            background: #505050;
+            height: 100%;
+            margin-top: -50px;
+        }
+        #freefire,#bgmi,#cod,#strumble,#pubg{
+        	margin-top: 90%;
+        	text-align: center;
+        }
+        .no-text{
+        	background: transparent;
+        	font-size: 20px;
+        	color: #a9a9a9;
+        }
+        .game-content{
+        	background: transparent;
+        }
+        .question-icon{
+        	width: 30px;
+        	margin-left: 320px;
+        	margin-top: -30px;
+        }
+        .leaderboard-icon{
+        	width: 30px;
+        	margin-left: 20px;
+        	margin-top: -30px;
+        }
+    }
+</style>
+<div class="header">
+    <h3 class="header-text" onclick="reload()">YOPSH !</h3>
+</div>
+<img src="icon/question-icon.svg" class="question-icon" id="questionImage">
+<img src="icon/leader-board.svg" class="leaderboard-icon" id="leaderboardImage">
+<div class="games">
+    <div class="container" onclick="showGame('freefire')">
+        <img src="icon/freefire-icon.png" class="img-icon">
+    </div>
+    <div class="container" onclick="showGame('bgmi')">
+        <img src="icon/bgmi-icon.webp" class="img-icon">
+    </div>
+    <div class="container" onclick="showGame('cod')">
+        <img src="icon/cod-icon.jpg" class="img-icon">
+    </div>
+    <div class="container" onclick="showGame('strumble')">
+        <img src="icon/strumble-icon.jpg" class="img-icon">
+    </div>
+    <div class="container" onclick="showGame('pubg')">
+        <img src="icon/pubg-icon.webp" class="img-icon">
+    </div>
+</div>
+<div class="games-container">
+    <div id="freefire" class="game-content">
+        <p class="no-text">Coming Soon...</p>
+    </div>
+
+    <div id="bgmi" class="game-content" style="display: none;">
+    	<p class="no-text">Coming Soon...</p>
+    </div>
+
+    <div id="cod" class="game-content" style="display: none;">
+    	<p class="no-text">Coming Soon...</p>
+    </div>
+
+    <div id="strumble" class="game-content" style="display: none;">
+    	<p class="no-text">Coming Soon...</p>
+    </div>
+
+    <div id="pubg" class="game-content" style="display: none;">
+    	<p class="no-text">Coming Soon...</p>
+    </div>
+</div>
+<script>
+    function reload() {
+        location.reload();
+    }
+
+    function showGame(game) {
+        var gameContents = document.getElementsByClassName('game-content');
+        for (var i = 0; i < gameContents.length; i++) {
+            gameContents[i].style.display = 'none';
+        }
+        document.getElementById(game).style.display = 'block';
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var containers = document.querySelectorAll('.container');
+        containers.forEach(function(container) {
+            container.addEventListener('click', function() {
+                containers.forEach(function(c) {
+                    c.classList.remove('clicked');
+                });
+                container.classList.add('clicked');
+            });
+        });
+    });
+</script>
+<script>
+var leaderboardImage = document.getElementById("leaderboardImage");
+leaderboardImage.setAttribute("onclick", "window.location.href = '#';");
+var leaderboardImage = document.getElementById("questionImage");
+leaderboardImage.setAttribute("onclick", "window.location.href = '#';");
+</script>

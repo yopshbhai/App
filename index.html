@@ -1,0 +1,564 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/8aa17a250d.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    background: #F4F4F4;
+    overflow-x: hidden;
+    font-family: 'Roboto';
+}
+.header {
+    margin-left: 25px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+.menu {
+    background: #000;
+    height: 32px;
+    width: 32px;
+    border-radius: 125px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+}
+.menu-icon {
+    width: 20px;
+    background: transparent;
+}
+.head-text {
+    font-size: 23.3px;
+    font-family: "Tilt Neon", sans-serif;
+}
+.head-text::before {
+    content: '';
+    background: yellow;
+    width: 20px;
+}
+.bell-icon {
+    width: 30px;
+    cursor: pointer;
+}
+.slider {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #f0f0f0;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+.slider-content {
+    padding: 20px;
+    height: 95%;
+    background: #FFF;
+}
+#closeSlider {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+#closeSlider:hover {
+    background-color: #cc0000;
+}
+.search-box {
+    margin-left: 12.5%;
+    margin-top: 16px;
+    width: 260px;
+    padding: 8px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: #FFF;
+}
+.search-btn {
+    padding: 8px;
+    border-radius: 25px;
+    border: none;
+    background: #9ceff7;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+.next-icon {
+    width: 16px;
+    background: transparent;
+}
+.search-results {
+    margin-top: 20px;
+}
+.search-results a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.search-results img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+    .bell-icon {
+        margin-left: 90px;
+    }
+    .head-text {
+        margin-left: 90px;
+    }
+    .close-icon {
+        width: 16px;
+        background: transparent;
+    }
+    #closeSlider {
+        border-radius: 25px;
+        height: 30px;
+        width: 30px;
+        justify-content: center;
+    }
+    .search-results {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-left: 50px;
+    }
+    .search-results .search-result-item {
+        margin-right: 10px;
+        text-align: center;
+    }
+    .search-results .search-result-item img {
+        display: block;
+        margin: 0 auto;
+    }
+    .search-results .search-result-item p {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    .user-text{
+        margin-left: 13%;
+        margin-top: 10px;
+    }
+    .icon-img{
+        width: 32px;
+        background: #FFF;
+    }
+    .icon-btn{
+        padding: 12px;
+        margin-left: 17px;
+        background: #FFF;
+        border-radius: 25px;
+        border: none;
+    }
+    .icons{
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+    .ad-img{
+        margin-left: 13%;
+        margin-top: 28px;
+        width: 286px;
+        height: 70px;
+        border-radius: 8px;
+    }
+    .ad,.updates{
+        overflow: hidden;
+    }
+    .updates-img {
+    margin-left: 13%;
+    margin-top: 10px;
+    width: 283px;
+    height: 107px;
+    border-radius: 8px;
+}
+    .hidden{
+        display: none;
+    }
+    .dot {
+    height: 18px;
+    width: 18px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .dot.active {
+    background-color: lightblue;
+  }
+  .dots-main{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .footer{
+    background: #FFF;
+    width: 303px;
+    height: 38px;
+    margin-left: 10%;
+    margin-top: 70px;
+    position: fixed;
+    border-radius: 25px;
+    align-items: center;
+    display: inline-flex;
+  }
+  .footer-links{
+    margin-left: 30px;
+  }
+  .footer-btn{
+    padding: 6px;
+    font-size: 21px;
+    background: #FFF;
+    border: none;
+  }
+  .footer-btn.clicked {
+    color: purple;
+  }
+  .footer-btn:hover:not(.clicked) {
+    color: black; 
+  }
+  .slo{
+    background: transparent;
+    margin-top: 20px;
+  }
+  .controls{
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: block;
+    
+  }
+  .controls-btn,.controls-btn1,.controls-btn2,.controls-btn3,.controls-btn4{
+    margin-top: 10px;
+    padding: 8px;
+    width: 210px;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    background: transparent;
+  }
+  .controls-img{
+    width: 24px;
+    background: transparent;
+  }
+  .message {
+    position: fixed;
+    left: 50%;
+    bottom: 170px;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.message.success {
+    background-color: #4caf50;
+    width: 202px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #f44336;
+}
+
+.message.show {
+    opacity: 1;
+}
+.controls-btn,
+.controls-btn1,
+.controls-btn2,
+.controls-btn3,
+.controls-btn4 {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-items: center;
+  display: flex;
+}
+.controls-btn1{
+    margin-top: -15px;
+}
+.controls-btn2{
+    margin-top: -15px;
+}
+.controls-btn4{
+    margin-top: -15px;
+}
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+.some-post{
+    margin-left: 43px;
+    margin-top: 130px;
+
+}
+.notify{
+    overflow: hidden;
+}
+}
+</style>
+<div class="header">
+    <div class="menu" id="sliderIcon">
+        <img src="icon/menu-icon.svg" class="menu-icon">
+    </div>
+    <div class="head">
+        <h4 class="head-text" onclick="reload()">YOSHP !</h4>
+    </div>
+    <div class="notify">
+       <img src="icon/user-icon.png" class="bell-icon">
+    </div>
+</div>
+<div id="slider" class="slider">
+    <div class="slider-content">
+      <button id="closeSlider"><img src="icon/close-icon.svg" class="close-icon"></button>
+      <div class="slo">
+      <h4 class="text-slo" style="background: transparent;">Hey Buddy!</h4>
+      <h4 class="text-slo" style="background: transparent;">Did You Find This:</h4>
+  </div>
+  <hr style="margin-top: 10px;">
+  <div class="controls">
+      <button class="controls-btn"><img src="icon/upload-game.svg" class="controls-img">&nbsp; Upload Games</button><br>
+      <button class="controls-btn1" id="uploadPost"><img src="icon/upload-icon.svg" class="controls-img">&nbsp; Upload Post</button><br>
+      <button class="controls-btn2"><img src="icon/tounament-icon.svg" class="controls-img">&nbsp; Tournaments</button>
+      <hr style="margin-top: 10px;">
+      <button class="controls-btn3"><img src="icon/invite-icon.svg" class="controls-img">&nbsp; Invite A Friend</button><br>
+      <button class="controls-btn4"><img src="icon/question-icon.svg" class="controls-img">&nbsp; Need Help</button>
+  </div>
+    </div>
+</div>
+<div class="search">
+    <input type="text" class="search-box" id="searchBox">
+    <button class="search-btn"><img src="icon/next-icon.svg" class="next-icon"></button>
+</div>
+<h3 class="user-text">Recent:</h3>
+<div class="search-results" id="searchResults"></div>
+<div class="social-links">
+    <h3 class="user-text">Our Social Links:</h3>
+    <div class="icons">
+        <a href="#"><button class="icon-btn"><img src="icon/youtube-icon.svg" class="icon-img"></button></a>
+        <a href="#"><button class="icon-btn"><img src="icon/facebook-icon.svg" class="icon-img"></button></a>
+        <a href="#"><button class="icon-btn"><img src="icon/twitter-icon.svg" class="icon-img"></button></a>
+        <a href="#"><button class="icon-btn"><img src="icon/instagram-icon.svg" class="icon-img"></button></a>
+    </div>
+</div>
+<div class="ad">
+    <a href="#"><img src="icon/28670.png" class="ad-img"></a>
+</div>
+<div class="updates">
+    <h3 class="user-text">Updates:</h3>
+    <div id="div1"><img src="icon/283107.png" class="updates-img"></div>
+    <div id="div2" class="hidden"><img src="icon/283107.png" class="updates-img"></div>
+    <div id="div3" class="hidden"><img src="icon/283107.png" class="updates-img"></div>
+    <div class="dots-main">
+    <span class="dot active" onclick="showDiv(1)"></span>
+    <span class="dot" onclick="showDiv(2)"></span>
+    <span class="dot" onclick="showDiv(3)"></span>
+</div>
+</div>
+<div id="message"></div>
+<div class="footer">
+    <a href="#" class="footer-links"><button class="footer-btn clicked"><i class="fa-solid fa-house" style="overflow: hidden;"></i></button></a>
+    <a href="updates.html" class="footer-links"><button class="footer-btn"><i class="fa-solid fa-bullhorn" style="transform: rotate(338deg); overflow: hidden;"></i></button></a>
+    <a href="#" class="footer-links"><button class="footer-btn"><i class="fa-solid fa-gamepad" style="overflow: hidden;"></i></button></a>
+    <a href="#" class="footer-links"><button class="footer-btn"><i class="fa-solid fa-video" style="overflow: hidden;"></i></button></a>
+</div>
+<!-- Script for Whole Page-->
+<script>
+    function reload(){
+        location.reload()
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+    const updateProfileBtn = document.querySelector('.controls-btn');
+    const uploadPostBtn = document.querySelector('.controls-btn1');
+    const tournamentsBtn = document.querySelector('.controls-btn2');
+    const inviteFriendBtn = document.querySelector('.controls-btn3');
+    const needHelpBtn = document.querySelector('.controls-btn4');
+    const userBtn = document.querySelector('.bell-icon');
+
+    const updateProfileURL = 'update_profile.html';
+    const uploadPostURL = 'upload-post.html';
+    const tournamentsURL = 'tournaments.html';
+    const inviteFriendURL = 'invite_friend.html';
+    const needHelpURL = 'need_help.html';
+    const userURL = 'user.html';
+
+    const inviteText = "Check out this amazing app!";
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    document.body.appendChild(messageDiv);
+
+    updateProfileBtn.addEventListener('click', function() {
+        window.location.href = updateProfileURL;
+    });
+    userBtn.addEventListener('click', function() {
+        window.location.href = userURL;
+    });
+
+    uploadPostBtn.addEventListener('click', function() {
+        window.location.href = uploadPostURL;
+    });
+
+    tournamentsBtn.addEventListener('click', function() {
+        window.location.href = tournamentsURL;
+    });
+
+    inviteFriendBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText(inviteText)
+            .then(() => {
+                showMessage("Invitation URL copied!", 'success');
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+                showMessage("Failed to copy invitation text to clipboard. Please try again.", 'error');
+            });
+    });
+
+    needHelpBtn.addEventListener('click', function() {
+        window.location.href = needHelpURL;
+    });
+
+    const sliderIcon = document.getElementById('sliderIcon');
+    const slider = document.getElementById('slider');
+    const closeSliderBtn = document.getElementById('closeSlider');
+    const searchBox = document.getElementById('searchBox');
+    const searchResults = document.getElementById('searchResults');
+
+    sliderIcon.addEventListener('click', function() {
+        slider.style.left = '0';
+    });
+
+    closeSliderBtn.addEventListener('click', function() {
+        slider.style.left = '-250px';
+    });
+
+    let initialSearchResultsData = [
+        { name: 'Initial Result 1', image: 'https://via.placeholder.com/150', link: '#' },
+        { name: 'Initial Result 2', image: 'https://via.placeholder.com/150', link: '#' }
+    ];
+
+    function shuffleSearchResults() {
+        initialSearchResultsData = shuffleArray(initialSearchResultsData);
+        renderSearchResults(initialSearchResultsData);
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    shuffleSearchResults();
+    
+    setInterval(shuffleSearchResults, 10000);
+
+    searchBox.addEventListener('input', function() {
+        const query = this.value.trim().toLowerCase();
+        if (query.length > 0) {
+            const searchResultsData = [
+                { name: 'Result 1', image: 'https://via.placeholder.com/150', link: '#' },
+                { name: 'Result 2', image: 'https://via.placeholder.com/150', link: '#' },
+                { name: 'Result 3', image: 'https://via.placeholder.com/150', link: '#' }
+            ];
+
+            const filteredResults = searchResultsData.filter(result => result.name.toLowerCase().includes(query));
+
+            renderSearchResults(filteredResults);
+        } else {
+            renderSearchResults(initialSearchResultsData);
+        }
+    });
+
+    function renderSearchResults(results) {
+        searchResults.innerHTML = '';
+        if (results.length > 0) {
+            results.forEach(result => {
+                const resultContainer = document.createElement('div');
+                resultContainer.classList.add('search-result-item');
+
+                const resultImage = document.createElement('img');
+                resultImage.src = result.image;
+                resultImage.alt = result.name;
+
+                const resultLink = document.createElement('a');
+                resultLink.href = result.link;
+                resultLink.appendChild(resultImage);
+
+                const resultName = document.createElement('p');
+                resultName.textContent = result.name;
+
+                resultContainer.appendChild(resultLink);
+                resultContainer.appendChild(resultName);
+                searchResults.appendChild(resultContainer);
+            });
+        } else {
+            const noResultsMessage = document.createElement('p');
+            noResultsMessage.textContent = 'No results found.';
+            searchResults.appendChild(noResultsMessage);
+        }
+    }
+
+    function showMessage(message, type) {
+        messageDiv.textContent = message;
+        messageDiv.classList.add(type, 'show');
+
+        setTimeout(function() {
+            messageDiv.classList.remove('show');
+        }, 3000); // 3 seconds timeout for the message to disappear
+    }
+
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            showDiv(index + 1);
+        });
+    });
+
+    function showDiv(divNumber) {
+        if (divNumber !== 1 && document.getElementById('div1').classList.contains('hidden')) {
+            document.getElementById('div1').classList.remove('hidden');
+        }
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById('div' + i).classList.add('hidden');
+            document.getElementsByClassName('dot')[i - 1].classList.remove('active');
+        }
+        document.getElementById('div' + divNumber).classList.remove('hidden');
+        document.getElementsByClassName('dot')[divNumber - 1].classList.add('active');
+    }
+});
+
+</script>

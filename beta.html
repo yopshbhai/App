@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Data</title>
+</head>
+<body>
+  <h2>Submit Data</h2>
+  <form id="dataForm" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br><br>
+    
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message"></textarea><br><br>
+    
+    <label for="image">Upload Image:</label><br>
+    <input type="file" id="image" name="image"><br><br>
+    
+    <input type="button" value="Submit" onclick="submitForm()">
+  </form>
+
+  <script>
+    function submitForm() {
+      var form = document.getElementById("dataForm");
+      var formData = new FormData(form);
+      
+      fetch('https://script.google.com/macros/s/AKfycbxQB3ftb80RUAyvaE6PugyorkW6lD_zYuP3ME4YI3xeHRspQ1u39X23QAb9iYcKgw4p/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        alert("Data submitted successfully!");
+        form.reset();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred while submitting data!");
+      });
+    }
+  </script>
+</body>
+</html>
