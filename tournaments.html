@@ -85,7 +85,7 @@
     }
 </style>
 <div class="header">
-    <h3 class="header-text" onclick="reload()">YOPSH !</h3>
+    <h3 class="header-text" onclick="window.location.href = 'index.html'">YOPSH !</h3>
 </div>
 <img src="icon/question-icon.svg" class="question-icon" id="questionImage">
 <img src="icon/leader-board.svg" class="leaderboard-icon" id="leaderboardImage">
@@ -128,10 +128,6 @@
     </div>
 </div>
 <script>
-    function reload() {
-        location.reload();
-    }
-
     function showGame(game) {
         var gameContents = document.getElementsByClassName('game-content');
         for (var i = 0; i < gameContents.length; i++) {
